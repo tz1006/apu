@@ -15,7 +15,26 @@ def login(username, password):
     se.set_field_value('#password', password)
     se.click('input.btn-submit', expect_loading=True)
 
-def 
+def get()
+    course_list = get_course()
+    for i in get_course():
+        se.open(i)
+        
+    
+    
+
+def get_course():
+    html = se.content
+    soup = BeautifulSoup(html, "html.parser")
+    sources = soup.select('#pda-portlet-site-menu > li > span > a')
+    li = []
+    for i in sources:
+        li.append(i.get('href'))
+    li.remove(li[0])
+    return(li)
+
+get_assignment(url):
+    se.open(url)
 
 
 
