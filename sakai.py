@@ -4,6 +4,7 @@
 
 from ghost import Ghost, Session
 from bs4 import BeautifulSoup
+import sms
 
 gh = Ghost()
 se = Session(gh, wait_timeout=30, display=True, viewport_size=(375, 553), download_images=True)
@@ -61,8 +62,22 @@ def get_assignment(url):
         l = [title, opendate, duedate]
         li.append(l)
     return(li)
-    
-    
+
+
+def totext(assignment):
+    title = assignment[0]
+    due = assignment[2]
+    text = '%s Due: %s' % (title, due)
+    return(text)
+
+def send_message(li):
+    body = ''
+    for i in li:
+        body += (totext(i) + '\n')
+    text = '作业如下：\n%s' % body
+    sms.send_sms(16267318573, text)
+
 
 login('ztang15', 'Tz999000')
 get()
+send_message(assignment_list)
