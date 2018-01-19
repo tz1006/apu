@@ -15,10 +15,11 @@ def login(username, password):
     se.set_field_value('input.input-box', username)
     se.set_field_value('#password', password)
     se.click('#login-btn', expect_loading=True)
-    se.sleep(3)
+    se.wait_for_selector('div.tab-content')
 
 
 def get_schedule():
+    global schedule
     html = se.content
     soup = BeautifulSoup(html, "html.parser")
     source = soup.select('div.active > a')
@@ -26,10 +27,11 @@ def get_schedule():
     for i in source:
         class_name = i.select('div.section-body')[0].text
         class_code = i.select('div.section-body')[1].text
-        class_time = i.select('div.section-body')[1].text
-        class_loacation = i.select('div.section-body')[1].text
+        class_time = i.select('div.section-body')[2].text
+        class_location = i.select('div.section-body')[3].text
         schedule.append((class_name, class_code, class_time, class_location))
-
+    print('今天有%d节课' % len(schedule))
 
 
 login('ztang15', 'Tz999000')
+get_schedule()
