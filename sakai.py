@@ -79,7 +79,7 @@ def send_message(li):
     print('已发送短信到 16267318573 \n %s' % text)
 
 
-login('ztang15', 'Tz999000')
+login('ztang15', 'Tz')
 get()
 send_message(assignment_list)
 
