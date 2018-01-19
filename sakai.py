@@ -59,7 +59,7 @@ def get_assignment(url):
         title = '%s - %s' % (course_code, title)
         opendate = i.find_all(headers='openDate')[0].text.strip()
         duedate = i.find_all(headers='dueDate')[0].text.strip()
-        l = [title, opendate, duedate]
+        l = (title, opendate, duedate)
         li.append(l)
     return(li)
 
