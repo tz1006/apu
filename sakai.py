@@ -25,7 +25,7 @@ def get():
     index()
     course_list = get_course()
     for i in get_course():
-        print(i)
+        #print(i)
         for l in get_assignment(i):
             assignment_list.append(l)
     print('一共%d个作业' % len(assignment_list))
