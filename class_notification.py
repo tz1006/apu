@@ -33,5 +33,5 @@ def get_schedule():
     print('今天有%d节课' % len(schedule))
 
 
-login('ztang15', 'Tz999000')
+login('ztang15', 'Tz')
 get_schedule()
