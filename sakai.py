@@ -73,11 +73,13 @@ def totext(assignment):
 def send_message(li):
     body = ''
     for i in li:
-        body += (totext(i) + '\n')
-    text = '作业如下：\n%s' % body
+        body += ('- ' + totext(i) + '\n')
+    text = 'SAKAI作业如下：\n%s 一共%d个' % (body, len(li))
     sms.send_sms(16267318573, text)
+    print('已发送短信到 16267318573 \n %s' % text)
 
 
 login('ztang15', 'Tz999000')
 get()
 send_message(assignment_list)
+
